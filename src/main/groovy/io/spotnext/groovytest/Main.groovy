@@ -10,14 +10,14 @@ class Main {
 		user.name = "test"
 
 		// nested instantiation, almost like json
-		def user2 = new UserData([
+		def user2 = new UserData(
 			id   : 2,
 			name : "test",
-			group: new UserGroup([
+			group: new UserGroup(
 				id  : 100,
 				name: "group"
-			])
-		])
+			)
+		)
 
 		// extension methods
 		String nullObj = " a "
@@ -26,7 +26,7 @@ class Main {
 		}
 
 		// auto implemented clonable
-		final def userClone = (UserData) user.clone()
+		final def userClone =  (UserData) user.clone()
 		assert userClone.name == user.name
 
 		// awesome map initialization
@@ -39,8 +39,8 @@ class Main {
 
 		// operator overloading, also customizable
 		def number1 = new BigDecimal(10)
-		def number2 = new BigDecimal(10)
-		number1 + number2
+		def number2 =new BigDecimal(10)
+		number1 +  number2
 
 		// java lambdas
 		//		def lambda = (a, b) -> { a + b }
@@ -53,10 +53,10 @@ class Main {
 		def json = [
 			id     : 2,
 			content: [
-				name: "mojo"
+				name:"mojo"
 			]
 		]
-		
+
 		def d1 = 1.mm
 		def d2 = 1.cm
 		def sum = (d1 + d2).cm // add different distances and convert

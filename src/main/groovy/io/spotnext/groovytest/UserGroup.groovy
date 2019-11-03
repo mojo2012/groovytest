@@ -10,7 +10,6 @@ import static groovy.transform.AutoCloneStyle.SERIALIZATION
 @Immutable
 @TupleConstructor
 class UserGroup implements Serializable {
-    int id
-    String name
-
+	int id
+	String name
 }

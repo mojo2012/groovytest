@@ -12,11 +12,11 @@ import static groovy.transform.AutoCloneStyle.SERIALIZATION
 @EqualsAndHashCode
 @TupleConstructor
 class UserData implements Serializable {
-    int id
-    String name
-    UserGroup group
+	int id
+	String name
+	UserGroup group
 
-    public void setName(String name) {
-        this.name = name
-    }
+	public void setName(String name) {
+		this.name = name
+	}
 }

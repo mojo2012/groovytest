@@ -39,19 +39,19 @@ class Main {
 
 		// operator overloading, also customizable
 		def number1 = new BigDecimal(10)
-		def number2 =new BigDecimal(10)
+		def number2 = new BigDecimal(10)
 		number1 +  number2
 
 		// java lambdas
-		//		def lambda = (a, b) -> { a + b }
+		// def lambda = (a, b) -> { a + b }
 
 		// invoke method reference
-		//		def valueOf = String::valueOf
-		//		println(valueOf("a"))
+		// def valueOf = String::valueOf
+		// println(valueOf("a"))
 
 		// json
 		def json = [
-			id     : 2,
+			id: 2,
 			content: [
 				name:"mojo"
 			]

@@ -1,0 +1,54 @@
+plugins {
+	id 'groovy'
+	id 'java'
+	id 'maven-publish'
+	id "com.diffplug.gradle.spotless" version "3.25.0"
+}
+
+group = 'io.spot-next'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenLocal()
+	maven {
+		url = 'https://repo.maven.apache.org/maven2'
+	}
+}
+
+dependencies {
+	implementation 'org.codehaus.groovy:groovy:3.0.0-rc-1'
+
+	implementation 'org.apache.commons:commons-lang3:3.9'
+	implementation 'io.spot-next:groovier:1.0-SNAPSHOT'
+}
+
+compileGroovy.groovyOptions.configurationScript = file('config.groovy')
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from(components.java)
+		}
+	}
+}
+
+spotless {
+	java {
+		// licenseHeaderFile 'spotless.license.java'
+		removeUnusedImports()
+	}
+	groovy {
+		// licenseHeaderFile 'spotless.license.java'
+		excludeJava() // excludes all Java sources within the Groovy source dirs from formatting
+		paddedCell() // Avoid cyclic ambiguities
+		// the Groovy Eclipse formatter extends the Java Eclipse formatter,
+		// so it formats Java files by default (unless `excludeJava` is used).
+		// greclipse().configFile('greclipse.properties')
+	}
+	groovyGradle {
+		// same as groovy, but for .gradle (defaults to '*.gradle')
+		target '*.gradle', 'additionalScripts/*.gradle'
+		// greclipse().configFile('greclipse.properties')
+	}
+}

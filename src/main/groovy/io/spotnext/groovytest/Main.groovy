@@ -1,14 +1,12 @@
 package io.spotnext.groovytest
 
-import io.spotnext.groovier.measures.Distance
-
 class Main {
 	static void main(String... args) {
 		println("Starting")
 
 		// automatic constructor for all privates fields, used via named variables
 		final def user = new UserData(name: "mojo")
-		// invokes the overriden setName() method
+		// invokes the overridden setName() method
 		user.name = "test"
 
 		// nested instantiation, almost like json
@@ -35,7 +33,9 @@ class Main {
 		def map = ["a": 1, "b": 2]
 		// and also for collections
 		def list = [1, 2, 3]
-		//		def listEntry = list?[4] // doesn't fail
+		list << 4 // add
+		list += 5 // add
+		//		def listEntry = list ?[6] // doesn't fail
 
 		// operator overloading, also customizable
 		def number1 = new BigDecimal(10)
@@ -43,11 +43,11 @@ class Main {
 		number1 + number2
 
 		// java lambdas
-//		def lambda = (int a, int b) -> { a + b }
+		//		def lambda = (a, b) -> { a + b }
 
 		// invoke method reference
-//		def valueOf = String::valueOf
-//		println(valueOf("a"))
+		//		def valueOf = String::valueOf
+		//		println(valueOf("a"))
 
 		// json
 		def json = [
@@ -57,11 +57,11 @@ class Main {
 			]
 		]
 		
-		Distance d1 = 1.mm
-		Distance d2 = 1.cm
-//		Distance sum = d1 + d2
-		
-//		println("Distance: $sum")
+		def d1 = 1.mm
+		def d2 = 1.cm
+		def sum = (d1 + d2).cm // add different distances and convert
+
+		println("Distance: $sum")
 
 		//multiline strings
 		final def output = """\

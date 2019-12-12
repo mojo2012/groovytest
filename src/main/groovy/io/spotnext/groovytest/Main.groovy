@@ -10,14 +10,18 @@ class Main {
 		user.name = "test"
 
 		// nested instantiation, almost like json
-		def user2 = new UserData(
+		def user2 = new UserData([
 			id   : 2,
 			name : "test",
-			group: new UserGroup(
+			group: new UserGroup([
 				id  : 100,
 				name: "group"
-			)
-		)
+			])
+		])
+
+		user2.with {
+			name = "test2"
+		}
 
 		// extension methods
 		String nullObj = " a "
@@ -35,7 +39,7 @@ class Main {
 		def list = [1, 2, 3]
 		list << 4 // add
 		list += 5 // add
-		//		def listEntry = list ?[6] // doesn't fail
+		def listEntry = list[6] // doesn't fail
 
 		// operator overloading, also customizable
 		def number1 = new BigDecimal(10)
@@ -43,17 +47,18 @@ class Main {
 		number1 +  number2
 
 		// java lambdas
-		// def lambda = (a, b) -> { a + b }
+		def lambda = { int a, int b ->  a + b }
+		//		var lambda = (int a, int b) -> { a + b }
 
 		// invoke method reference
-		// def valueOf = String::valueOf
-		// println(valueOf("a"))
+		//		var valueOf = String::valueOf
+		//		println(valueOf("a"))
 
 		// json
 		def json = [
 			id: 2,
 			content: [
-				name:"mojo"
+				name: "mojo"
 			]
 		]
 
